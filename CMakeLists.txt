@@ -5,3 +5,4 @@ set(CMAKE_C_STANDARD 17)
 
 add_executable(beat main.c)
 target_link_libraries(beat m)
+install(TARGETS beat DESTINATION /usr/local/bin)
