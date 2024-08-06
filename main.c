@@ -10,6 +10,6 @@ int main(void) {
     int minute = CURRENT_GMT -> tm_min;
     int second = CURRENT_GMT -> tm_sec;
     int beat = floor((3600 * hour + 60 * minute + second) / 86.4);
-    printf("@%d", beat);
+    printf("@%d\n", beat);
     return 0;
 }
