@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <time.h>
-#include <math.h>
+
+// number of seconds in an hour, a day and a swatch beat
+#define ONE_HOUR 3600
+#define ONE_DAY 86400
+#define ONE_BEAT 86.4
 
 int main(void) {
     time_t CURRENT_TIME = time(NULL);
-    struct tm *CURRENT_GMT = gmtime(&CURRENT_TIME);
-    // BEAT is calculated at GMT+1 (CET)
-    int hour = CURRENT_GMT -> tm_hour + 1;
-    int minute = CURRENT_GMT -> tm_min;
-    int second = CURRENT_GMT -> tm_sec;
-    int beat = floor((3600 * hour + 60 * minute + second) / 86.4);
+    const int oneHour = 3600;
+    const int oneDay = 86400;
+    int beat = ((CURRENT_TIME + ONE_HOUR) % ONE_DAY ) / ONE_BEAT;
     printf("@%d\n", beat);
     return 0;
 }
